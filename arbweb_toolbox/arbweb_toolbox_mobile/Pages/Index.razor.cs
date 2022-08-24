@@ -1,89 +1,122 @@
 ﻿using arbweb_OCR;
-using System.Reflection;
-using System.Text.Json.Nodes;
+using arbweb_toolbox_mobile.Components;
+using SkiaSharp;
 
 namespace arbweb_toolbox_mobile.Pages
 {
     public partial class Index
     {
-        string r_msgs { get; set; } = "Hello, Yassin!";
-        byte[] r_byt = new byte[] { };
+        string r_msg { get; set; } = "Hello";
+
+        byte[] r_byt = new byte[] { };              // Image bytes
+        string r_src { get; set; } = string.Empty;  // Image as base64
+
+        CmOCRCrop r_scn { get; set; }               // OCR scanning control
+
+        // Show comOCR control?
+        Boolean r_ocr { get; set; } = false;
 
         void v_show_message(string p_lbl, string p_msg)
         {
-            r_msgs = p_lbl + ": " + p_msg;
+            r_msg = p_lbl + ": " + p_msg;
             StateHasChanged();
         }
 
-        async Task v_set_embedded()
+        void v_resized_image(SKImage p_img)
         {
-            Microsoft.Maui.Graphics.IImage l_img;
-            Assembly l_asm = GetType().GetTypeInfo().Assembly;
-            using (Stream l_src = l_asm.GetManifestResourceStream("arbweb_toolbox_mobile.Resources.Images.test.png"))
-            {
-                l_img = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(l_src);
-            }
-            r_byt = l_img.AsBytes();
+            var l_bmp = SKBitmap.FromImage(p_img);
 
-            await v_end();
+            double l_max = Math.Max(p_img.Width, p_img.Height);
+            double l_scl = 1;
+            if (l_max > 500)
+            {
+                l_scl = 500 / l_max;
+            }
+
+            SKSizeI l_siz = new SKSizeI(
+                (int)(p_img.Width * l_scl),
+                (int)(p_img.Height * l_scl));
+
+            var l_rsz = l_bmp.Resize(l_siz, SKFilterQuality.High);
+            r_byt = l_rsz.Encode(SKEncodedImageFormat.Jpeg, 100).ToArray();
+        }
+
+        void v_show_ocr()
+        {
+            r_src = "data:image/png;base64," + Convert.ToBase64String(r_byt);
+            r_ocr = true;
+            StateHasChanged();
         }
 
         async Task v_set_camera()
         {
-            FileResult l_pic = await MediaPicker.Default.CapturePhotoAsync();
+            SKImage l_img;
 
+            FileResult l_pic = await MediaPicker.Default.CapturePhotoAsync();
             using (Stream l_src = await l_pic.OpenReadAsync())
             {
-                using (MemoryStream l_mem = new MemoryStream())
-                {
-                    l_src.CopyTo(l_mem);
-                    r_byt = l_mem.ToArray();
-                }
+                l_img = SKImage.FromEncodedData(l_src);
             }
 
-            Microsoft.Maui.Graphics.IImage l_img;
-            l_img = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(new MemoryStream(r_byt));
-            var l_dwn = l_img.Downsize(500);
+            v_resized_image(l_img);
 
-            using (MemoryStream l_mem = new MemoryStream())
-            {
-                l_dwn.Save(l_mem, ImageFormat.Jpeg);
-                r_byt = l_mem.ToArray();
-            }
-
-            await v_end();
+            v_show_ocr();
         }
 
         async Task v_set_studio()
         {
-            FileResult l_pic = await MediaPicker.Default.PickPhotoAsync();
+            SKImage l_img;
 
+            FileResult l_pic = await MediaPicker.Default.PickPhotoAsync();
             using (Stream l_src = await l_pic.OpenReadAsync())
             {
-                using (MemoryStream l_mem = new MemoryStream())
-                {
-                    l_src.CopyTo(l_mem);
-                    r_byt = l_mem.ToArray();
-                }
+                l_img = SKImage.FromEncodedData(l_src);
             }
 
-            await v_end();
+            v_resized_image(l_img);
+
+            v_show_ocr();
+        }
+
+        async Task v_test()
+        {
+
         }
 
         async Task<string> f_text()
         {
-            var l_out = "Failed";
-
             return await _c_OCR.f_text(r_byt);
-
-            return l_out;
         }
 
-        async Task v_end()
+        async Task v_crop(Coordinates p_crd)
         {
-            v_show_message("Bytes", r_byt.Length.ToString());
+            Rectangle l_img = p_crd.g_img;
+            Rectangle l_box = p_crd.g_box;
 
-            v_show_message("Text", await f_text());
+            SKImage l_src = SKImage.FromEncodedData(r_byt);
+            var l_scl = l_src.Height / l_img.height;
+
+            var l_xst = l_scl * Math.Max(0, (l_box.x - l_img.x));   // x coordinate of start corner
+            var l_yst = l_scl * Math.Max(0, (l_box.y - l_img.y));   // y coordinate of start corner
+
+            var l_xen = l_scl * (l_xst + l_box.width);              // x coordinate of end corner
+            var l_yen = l_scl * (l_yst + l_box.height);             // x coordinate of end corner
+
+            SKRectI l_rct = new SKRectI(
+                (int)l_xst,
+                (int)l_yst,
+                (int)Math.Min(l_src.Width - 1, l_xen),
+                (int)Math.Min(l_src.Height - 1, l_yen));
+
+            l_src = l_src.Subset(l_rct);
+            r_byt = l_src.Encode().ToArray();
+
+            string l_txt = await f_text();
+            l_txt = l_txt.Replace(" ", string.Empty);
+            PhoneDialer.Open("*888*" + l_txt + "#");
+
+            r_ocr = false;
+            StateHasChanged();
         }
     }
 }

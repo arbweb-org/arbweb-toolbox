@@ -1,0 +1,18 @@
+﻿<div class="_c_card _c_arabic d-flex flex-row" dir="rtl" lang="ar">
+    <div style="padding: 10px;font-size: 70px;">
+        @(r_day)
+    </div>
+
+    <div class="flex-grow-1" style="width: 70px;padding: 30px 0px 0px 0px;">
+        @(r_mnt)
+        <br />
+        @(r_yer)
+    </div>
+
+    <div style="text-align: left;">
+        @if (r_vis) 
+        {
+            <img src=@($"img/Weather/{r_wid}.png") style="height: 100%;">
+        }
+    </div>
+</div>

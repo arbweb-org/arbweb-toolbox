@@ -1,15 +1,32 @@
 ﻿@page "/"
+@inject NavigationManager r_nav
+@inject IJSRuntime JS
 
-<div style="margin:40px; padding:40px; background-color:cornsilk; border-radius:5px">
-    <h1>@(r_msgs)</h1>
-    <br />
+@if (r_ocr)
+{
+    <CmOCRCrop @ref="@r_scn" r_src="@r_src" g_closed="@v_crop"></CmOCRCrop>
+}
 
-    <button @onclick="v_set_embedded" style="width:100px; height:40px">Embedded</button>
-    <br /><br />
+<div style="height:100vh; max-height:100vh; overflow:hidden; background-image:url('img/bk.jpg'); background-size: 300px 300px;">
+    <div style="margin:15px" class="d-flex justify-content-between">
+        <div><span class="oi oi-menu"></span></div>
+        <div><span class="oi oi-magnifying-glass"></span></div>
+    </div>
 
-    <button @onclick="v_set_camera" style="width:100px; height:40px">Capture</button>
-    <br /><br />
+    <CmWidget></CmWidget>
 
-    <button @onclick="v_set_studio" style="width:100px; height:40px">Pick</button>
-    <br /><br />
+    <div class="_c_button"
+         @onclick="v_set_camera">
+        الأكواد المختصرة
+    </div>
+
+    <div class="_c_button"
+         @onclick="v_set_studio">
+        محادثة سريعة
+    </div>
+
+    <div class="_c_button"
+         @onclick="v_test">
+        @(r_msg)
+    </div>
 </div>
