@@ -5,6 +5,9 @@ namespace arbweb_toolbox_api.Models.v1
     // Helper class to make 3rd party request
     internal static class _c_api_weather
     {
+        // API Key
+        public static string g_key { get; set; }
+
         // Json response from api.openweathermap.org
         class _c_resp_weather
         {
@@ -34,7 +37,7 @@ namespace arbweb_toolbox_api.Models.v1
 
         public static async Task<arbweb_toolbox_lib.Models._c_weather> f_get_id(double p_lat, double p_lon)
         {
-            string l_url = $"https://api.openweathermap.org/data/2.5/weather?lat={p_lat}&lon={p_lon}&appid=1e66c892251f6913e3e53db0b010d8e7";
+            string l_url = $"https://api.openweathermap.org/data/2.5/weather?lat={p_lat}&lon={p_lon}&appid={g_key}";
 
             HttpClient l_cln = new HttpClient();
             var l_rsp = await l_cln.GetAsync(l_url);

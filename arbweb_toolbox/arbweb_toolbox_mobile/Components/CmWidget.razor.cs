@@ -30,7 +30,13 @@ namespace arbweb_toolbox_mobile.Components
             var l_cln = new HttpClient();
             l_cln.Timeout = new TimeSpan(0, 0, 4);
 
-            var l_rsp = await l_cln.GetAsync("http://localhost/api/v1/get_data/");
+#if DEBUG
+            var l_hst = "http://localhost";
+#else
+            var l_hst = "https://toolbox.arbweb.org";
+#endif
+            
+            var l_rsp = await l_cln.GetAsync(l_hst + "/api/v1/get_data/");
             var l_str = await l_rsp.Content.ReadAsStringAsync();
             var l_dta = JsonSerializer.Deserialize<_c_local_data_v1>(l_str);
 

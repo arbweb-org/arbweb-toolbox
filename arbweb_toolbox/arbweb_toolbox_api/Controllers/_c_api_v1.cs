@@ -13,7 +13,11 @@ namespace arbweb_toolbox_api.Controllers
         public async Task<_c_local_data_v1> f_get_data()
         {
             // Client IP
-            var l_cip = "41.95.110.154"; // Request.HttpContext.Connection.RemoteIpAddress.ToString();
+#if DEBUG
+            var l_cip = "197.252.219.143"; // Sample IP address
+#else
+            var l_cip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+#endif
 
             var l_loc = await _c_api_location.f_get_location(l_cip);
             var l_dat = await _c_api_hijri.f_get_date();

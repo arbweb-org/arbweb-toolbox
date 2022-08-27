@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-
     <PropertyGroup>
         <TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
-        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-        <!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
         <OutputType>Exe</OutputType>
         <RootNamespace>arbweb_toolbox_mobile</RootNamespace>
         <UseMaui>true</UseMaui>
@@ -13,10 +10,10 @@
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>arbweb_toolbox_mobile</ApplicationTitle>
+        <ApplicationTitle>صندوق الأدوات</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.arbweb_toolbox_mobile</ApplicationId>
+        <ApplicationId>org.arbweb.toolbox</ApplicationId>
         <ApplicationIdGuid>1A440EA6-D3F2-44AC-8F1B-EC94414373B9</ApplicationIdGuid>
 
         <!-- Versions -->
@@ -28,7 +25,59 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+        <ErrorReport>none</ErrorReport>
+        <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+        <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    </PropertyGroup>
+
+    <!-- Build profiles -->
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+		<AndroidLinkMode>None</AndroidLinkMode>
+		<Optimize>False</Optimize>
+		<DebugType>none</DebugType>
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<RunAOTCompilation>False</RunAOTCompilation>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+      <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+
+      <DebugSymbols>True</DebugSymbols>
+      <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+      <DebugSymbols>True</DebugSymbols>
+      <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+      <DebugSymbols>True</DebugSymbols>
+      <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
+      <DebugSymbols>True</DebugSymbols>
+      <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+      <Optimize>False</Optimize>
+      <DebugType>none</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+      <Optimize>False</Optimize>
+      <DebugType>none</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
+      <Optimize>False</Optimize>
+      <DebugType>none</DebugType>
+      <DebugSymbols>True</DebugSymbols>
     </PropertyGroup>
 
     <ItemGroup>
@@ -48,19 +97,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="wwwroot\img\Weather\x1.png" />
-      <Content Remove="wwwroot\img\Weather\x2.png" />
-      <Content Remove="wwwroot\img\Weather\x3.png" />
-      <Content Remove="wwwroot\test.html" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Resources\Images\dotnet_bot.svg" />
-      <None Remove="Resources\Images\test.png" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Include="Resources\Images\test.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -72,12 +109,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="SkiaSharp" Version="2.88.0" />
+      <PackageReference Include="SkiaSharp" Version="2.88.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\arbweb_OCR\arbweb_OCR.csproj" />
       <ProjectReference Include="..\arbweb_toolbox_lib\arbweb_toolbox_lib.csproj" />
     </ItemGroup>
-
 </Project>

@@ -1,5 +1,4 @@
-﻿using arbweb_OCR;
-using arbweb_toolbox_mobile.Components;
+﻿using arbweb_toolbox_mobile.Components;
 using SkiaSharp;
 
 namespace arbweb_toolbox_mobile.Pages
@@ -85,7 +84,8 @@ namespace arbweb_toolbox_mobile.Pages
 
         async Task<string> f_text()
         {
-            return await _c_OCR.f_text(r_byt);
+            return String.Empty;
+            //return await _c_OCR.f_text(r_byt);
         }
 
         async Task v_crop(Coordinates p_crd)
