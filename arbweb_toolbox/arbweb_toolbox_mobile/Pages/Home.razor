@@ -1,0 +1,44 @@
+﻿@page "/"
+@inject NavigationManager r_nav
+@inject IJSRuntime JS
+
+<div style="height:100vh; max-height:100vh; overflow:hidden; text-align:right">
+    <!-- زر القائمة والعنوان -->
+    <div style="margin:15px"
+         class="d-flex justify-content-between">
+        <div style="width:100px">&nbsp;</div>
+        <div style="text-align:center; font-weight:bold">صندوق الأدوات</div>
+        <div style="width:100px"><span class="oi oi-menu"></span></div>
+    </div>
+
+    <!-- رسالة الترحيب وصورة الملف الشخصي -->
+    <div style="margin:30px 15px 25px 15px; height:32px; line-height:32px"
+         class="d-flex justify-content-between">
+        <img src="img/profile.svg" style="border-radius:16px" />
+        <div style="font-size:32px" dir="rtl">مرحبا!</div>
+    </div>
+
+    <!-- صندوق البحث -->
+    <div style="margin: 15px;height: 50px;line-height: 50px;background-color: aliceblue;border-radius: 25px;border-style: solid;border-width: 2px;" class="d-flex justify-content-between">
+        <div style="padding: 0px 0px 0px 15px;">
+            <span class="oi oi-magnifying-glass"></span>
+        </div>
+        <input type="text" class="_c_borderlessinp" style="width: 100%; height: 30px; margin: 8px 15px 0px 0px; font-size: 20px; text-align: right; direction: rtl">
+    </div>
+
+    <!-- اقتراحات البحث -->
+    <div style="overflow-x:scroll; direction: rtl"
+         class="_c_invisible_scroll">
+        <div style="margin: 15px; width: max-content; font-size:0px">
+            @for (var i_ndx = 0; i_ndx < r_itm.Length; i_ndx++)
+            {
+                <div class="_c_search_item" 
+                    style="background-color:@(f_item_color(i_ndx))">
+                    @(r_itm[i_ndx])
+                </div>
+            }
+        </div>
+    </div>
+    
+    <!--  -->
+</div>

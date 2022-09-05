@@ -130,3 +130,23 @@ input[type="radio"], input[type="checkbox"] {
     height:130px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
+
+._c_search_item {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 15px;
+    padding: 4px 20px 0px 20px;
+    height:30px;
+    line-height: 14px;
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 10px
+}
+
+._c_invisible_scroll {
+    scrollbar-width: none;
+}
+
+    ._c_invisible_scroll::-webkit-scrollbar {
+        display: none;
+    }

@@ -10,7 +10,7 @@
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>صندوق الأدوات</ApplicationTitle>
+        <ApplicationTitle>صندوق أدوات الويب العربي</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>org.arbweb.toolbox</ApplicationId>
@@ -30,59 +30,36 @@
         <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
         <EnableNETAnalyzers>False</EnableNETAnalyzers>
     </PropertyGroup>
-
-    <!-- Build profiles -->
+	
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
-		<AndroidLinkMode>None</AndroidLinkMode>
-		<Optimize>False</Optimize>
-		<DebugType>none</DebugType>
-		<AndroidPackageFormat>apk</AndroidPackageFormat>
-		<RunAOTCompilation>False</RunAOTCompilation>
+      <Optimize>False</Optimize>
+		
+      <AndroidPackageFormat>apk</AndroidPackageFormat>
+      <RunAOTCompilation>False</RunAOTCompilation>
+      <PublishTrimmed>False</PublishTrimmed>
     </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
-      <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-
-      <DebugSymbols>True</DebugSymbols>
-      <DebugType>none</DebugType>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
-      <DebugSymbols>True</DebugSymbols>
-      <DebugType>none</DebugType>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
-      <DebugSymbols>True</DebugSymbols>
-      <DebugType>none</DebugType>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
-      <DebugSymbols>True</DebugSymbols>
-      <DebugType>none</DebugType>
-    </PropertyGroup>
-
+	
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
       <Optimize>False</Optimize>
-      <DebugType>none</DebugType>
-      <DebugSymbols>True</DebugSymbols>
     </PropertyGroup>
-
+	
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
       <Optimize>False</Optimize>
-      <DebugType>none</DebugType>
-      <DebugSymbols>True</DebugSymbols>
     </PropertyGroup>
-
+	
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
       <Optimize>False</Optimize>
-      <DebugType>none</DebugType>
-      <DebugSymbols>True</DebugSymbols>
     </PropertyGroup>
 
+	<ItemGroup>
+		<EmbeddedResource Include="ILLink.Descriptors.xml">
+			<LogicalName>ILLink.Descriptors.xml</LogicalName>
+		</EmbeddedResource>
+	</ItemGroup>
+	
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" ForegroundScale="0.50" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
 
         <!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -94,6 +71,10 @@
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+	
+    <ItemGroup>
+      <Content Remove="wwwroot\test.html" />
     </ItemGroup>
 
     <ItemGroup>

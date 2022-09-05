@@ -77,11 +77,6 @@ namespace arbweb_toolbox_mobile.Pages
             v_show_ocr();
         }
 
-        async Task v_test()
-        {
-
-        }
-
         async Task<string> f_text()
         {
             return String.Empty;
