@@ -1,15 +1,16 @@
-﻿namespace arbweb_toolbox_mobile;
-#if WINDOWS
+﻿#if WINDOWS
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Windows.Graphics;
 #endif
 
+namespace arbweb_toolbox_mobile;
+
 public partial class App : Application
 {
-    public App()
-    {
-        InitializeComponent();
+	public App()
+	{
+		InitializeComponent();
 
         Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
         {
@@ -26,5 +27,5 @@ public partial class App : Application
         });
 
         MainPage = new MainPage();
-    }
+	}
 }

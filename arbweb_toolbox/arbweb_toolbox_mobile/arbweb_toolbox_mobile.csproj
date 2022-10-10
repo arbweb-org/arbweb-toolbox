@@ -14,10 +14,10 @@
 
         <!-- App Identifier -->
         <ApplicationId>org.arbweb.toolbox</ApplicationId>
-        <ApplicationIdGuid>1A440EA6-D3F2-44AC-8F1B-EC94414373B9</ApplicationIdGuid>
+        <ApplicationIdGuid>445880B0-5119-43C0-B391-EED630A7A0FC</ApplicationIdGuid>
 
         <!-- Versions -->
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationDisplayVersion>0.1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
 
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
@@ -25,46 +25,17 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-        <ErrorReport>none</ErrorReport>
-        <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
-        <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
-        <EnableNETAnalyzers>False</EnableNETAnalyzers>
-    </PropertyGroup>
-	
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
-      <Optimize>False</Optimize>
-		
-      <AndroidPackageFormat>apk</AndroidPackageFormat>
-      <RunAOTCompilation>False</RunAOTCompilation>
-      <PublishTrimmed>False</PublishTrimmed>
-    </PropertyGroup>
-	
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
-      <Optimize>False</Optimize>
-    </PropertyGroup>
-	
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
-      <Optimize>False</Optimize>
-    </PropertyGroup>
-	
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
-      <Optimize>False</Optimize>
     </PropertyGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Include="ILLink.Descriptors.xml">
-			<LogicalName>ILLink.Descriptors.xml</LogicalName>
-		</EmbeddedResource>
-	</ItemGroup>
-	
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" BaseSize="512,512" ForegroundScale="0.5" />
 
         <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" BaseSize="128,128" />
 
-        <!-- Images -->
+		<!-- Images -->
+        <MauiImage Include="Resources\Images\*" />
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
@@ -73,15 +44,15 @@
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
 	
-    <ItemGroup>
-      <Content Remove="wwwroot\test.html" />
-    </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Services\PartialMethods\" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="SkiaSharp" Version="2.88.1" />
+	</ItemGroup>
+	
     <ItemGroup>
-      <Folder Include="Services\PartialMethods\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="SkiaSharp" Version="2.88.1" />
-    </ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0-rc.1.22426.10" />
+    </ItemGroup>   
 </Project>

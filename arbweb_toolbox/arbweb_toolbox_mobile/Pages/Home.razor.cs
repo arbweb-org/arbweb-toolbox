@@ -2,8 +2,8 @@
 {
     public partial class Home
     {
-        string[] r_itm { get; set; } = new string[] 
-        { 
+        string[] r_itm { get; set; } = new string[]
+        {
             "الكل",
             "الأكواد المختصرة",
             "محادثة سريعة",
@@ -13,7 +13,7 @@
 
         string f_item_color(int p_ndx)
         {
-            switch (p_ndx) 
+            switch (p_ndx)
             {
                 case 0:
                     return "gold";
