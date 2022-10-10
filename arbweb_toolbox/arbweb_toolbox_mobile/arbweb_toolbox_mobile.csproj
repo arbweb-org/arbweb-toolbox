@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
-        <TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+        <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
         <OutputType>Exe</OutputType>
         <RootNamespace>arbweb_toolbox_mobile</RootNamespace>
         <UseMaui>true</UseMaui>
@@ -59,10 +59,10 @@
 	
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" ForegroundScale="0.50" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" BaseSize="512,512" ForegroundScale="0.5" />
 
         <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" BaseSize="128,128" />
 
         <!-- Images -->
 
@@ -83,9 +83,5 @@
 
     <ItemGroup>
       <PackageReference Include="SkiaSharp" Version="2.88.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\arbweb_toolbox_lib\arbweb_toolbox_lib.csproj" />
     </ItemGroup>
 </Project>
