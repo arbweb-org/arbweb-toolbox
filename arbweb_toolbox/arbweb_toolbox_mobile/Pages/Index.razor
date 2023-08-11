@@ -1,15 +1,7 @@
 ﻿@page "/"
 
-<div style="margin:40px; padding:40px; background-color:cornsilk; border-radius:5px">
-    <h1>@(r_msgs)</h1>
-    <br />
+<h1>Hello, world!</h1>
 
-    <button @onclick="v_set_embedded" style="width:100px; height:40px">Embedded</button>
-    <br /><br />
+Welcome to your new app.
 
-    <button @onclick="v_set_camera" style="width:100px; height:40px">Capture</button>
-    <br /><br />
-
-    <button @onclick="v_set_studio" style="width:100px; height:40px">Pick</button>
-    <br /><br />
-</div>
+<SurveyPrompt Title="How is Blazor working for you?" />

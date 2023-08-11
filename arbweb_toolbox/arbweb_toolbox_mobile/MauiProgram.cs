@@ -1,22 +1,30 @@
-﻿namespace arbweb_toolbox_mobile;
+﻿using arbweb_toolbox_mobile.Data;
+using Microsoft.Extensions.Logging;
 
-public static class MauiProgram
+namespace arbweb_toolbox_mobile
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                });
 
-        builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddMauiBlazorWebView();
+
 #if DEBUG
-        builder.Services.AddBlazorWebViewDeveloperTools();
-
+		builder.Services.AddBlazorWebViewDeveloperTools();
+		builder.Logging.AddDebug();
 #endif
-        return builder.Build();
+
+            builder.Services.AddSingleton<WeatherForecastService>();
+
+            return builder.Build();
+        }
     }
 }

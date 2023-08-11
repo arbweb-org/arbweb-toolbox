@@ -1,11 +1,12 @@
-﻿namespace arbweb_toolbox_mobile;
-
-public partial class App : Application
+﻿namespace arbweb_toolbox_mobile
 {
-	public App()
-	{
-		InitializeComponent();
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
 
-		MainPage = new MainPage();
-	}
+            MainPage = new MainPage();
+        }
+    }
 }
