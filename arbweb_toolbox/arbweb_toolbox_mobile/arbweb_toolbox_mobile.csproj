@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-
     <PropertyGroup>
         <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
@@ -13,10 +12,10 @@
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>arbweb_toolbox_mobile</ApplicationTitle>
+        <ApplicationTitle>صندوق أدوات الويب العربي</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.arbweb_toolbox_mobile</ApplicationId>
+        <ApplicationId>org.arbweb.toolbox</ApplicationId>
         <ApplicationIdGuid>0521B1A8-9AEF-43FF-8309-8D1607A3E4E8</ApplicationIdGuid>
 
         <!-- Versions -->
@@ -33,7 +32,7 @@
 
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
 
         <!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -53,4 +52,7 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Shared\" />
+    </ItemGroup>
 </Project>

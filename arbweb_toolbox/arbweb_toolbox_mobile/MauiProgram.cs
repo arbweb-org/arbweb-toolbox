@@ -1,5 +1,4 @@
-﻿using arbweb_toolbox_mobile.Data;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace arbweb_toolbox_mobile
 {
@@ -21,8 +20,6 @@ namespace arbweb_toolbox_mobile
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
-
-            builder.Services.AddSingleton<WeatherForecastService>();
 
             return builder.Build();
         }
