@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.7.34003.232
+VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "arbweb_toolbox_mobile", "arbweb_toolbox_mobile\arbweb_toolbox_mobile.csproj", "{C3D17162-9BD4-4A5F-A66B-8A949708AC43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "arbweb_toolbox_mobile", "arbweb_toolbox_mobile\arbweb_toolbox_mobile.csproj", "{A63DE486-3516-493D-843D-E6E5251783E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,17 +11,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C3D17162-9BD4-4A5F-A66B-8A949708AC43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3D17162-9BD4-4A5F-A66B-8A949708AC43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3D17162-9BD4-4A5F-A66B-8A949708AC43}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{C3D17162-9BD4-4A5F-A66B-8A949708AC43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3D17162-9BD4-4A5F-A66B-8A949708AC43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3D17162-9BD4-4A5F-A66B-8A949708AC43}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A63DE486-3516-493D-843D-E6E5251783E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63DE486-3516-493D-843D-E6E5251783E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63DE486-3516-493D-843D-E6E5251783E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A63DE486-3516-493D-843D-E6E5251783E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63DE486-3516-493D-843D-E6E5251783E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A63DE486-3516-493D-843D-E6E5251783E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {11AF29FB-843C-4FAD-9E78-36241A0A2B94}
+		SolutionGuid = {AFD2A311-75BF-43AE-A44A-5A06A4B042FE}
 	EndGlobalSection
 EndGlobal

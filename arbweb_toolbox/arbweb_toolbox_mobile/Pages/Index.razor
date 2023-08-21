@@ -1,5 +1,94 @@
 ﻿@page "/"
+@inject NavigationManager r_nav
+@inject IJSRuntime JS
 
-<h1>Hello, world!</h1>
+<div style="height:100vh; max-height:100vh; text-align:right; overflow: hidden"
+     class="d-flex flex-column">
+    <!-- عنوان الصفحة وزر القائمة -->
+    <div style="margin:15px; height:32px; line-height:32px"
+         class="d-flex flex-row-reverse align-items-center">
+        <img src="img/profile.svg" style="width:32px; border-radius:16px" />
+        <div style="height:18px; line-height:18px; font-size: 18px; margin: 0px 15px 0px 15px">الرئيسية</div>
+    </div>
 
-Welcome to your new app.
+    <!-- صندوق البحث -->
+    <div style="margin: 15px; margin-top:40px; height: 50px;line-height: 50px;background-color: aliceblue;border-radius: 25px;border-style: solid;border-width: 2px;"
+         class="d-flex justify-content-between">
+        <div style="padding: 0px 0px 0px 15px;">
+            <span class="oi oi-magnifying-glass"></span>
+        </div>
+        <input type="text" placeholder="إبحث عن أداة" class="_c_borderlessinp" style="width: 100%; height: 30px; margin: 8px 15px 0px 0px; font-size: 20px; text-align: right; direction: rtl">
+    </div>
+
+    <!-- اقتراحات البحث -->
+    <div style="overflow-x:scroll; direction: rtl"
+         class="_c_invisible_scroll">
+        <div style="margin: 15px; width: max-content; font-size:0px">
+            @for (var i_ndx = 0; i_ndx < r_itm.Length; i_ndx++)
+            {
+                <div class="_c_search_item"
+                 style="background-color:@(f_item_color(i_ndx))">
+                    @(r_itm[i_ndx])
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- الأدوات -->
+    <div class="_c_invisible_scroll flex-grow-1"
+         style="overflow-x: hidden; overflow-y:scroll">
+        <!-- الهاتف والاتصال -->
+        <div style="margin:30px 15px 0px 15px; height:32px; line-height:32px"
+             class="d-flex justify-content-between">
+            <div></div>
+            <div style="font-size:22px" dir="rtl">الهاتف والاتصال</div>
+        </div>
+
+        <div style="background-color: aliceblue"
+             class="d-flex flex-row-reverse _c_tile">
+            <img class="_c_tile_image" src="img/Home/items/1.png">
+
+            <div style="margin: 25px 15px 0px 0px; direction: rtl;">
+                <div style="font-size: 18px; line-height: 18px; height: 18px;">الرموز المختصرة</div>
+                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">شحن الرصيد - تحويل الرصيد..</div>
+            </div>
+        </div>
+
+        <div style="background-color: mintcream;"
+             class="d-flex flex-row-reverse _c_tile">
+            <img class="_c_tile_image" src="img/Home/items/2.png">
+
+            <div style="margin: 25px 15px 0px 0px; direction: rtl;">
+                <div style="font-size: 18px; line-height: 18px; height: 18px;">المحادثة السريعة</div>
+                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">واتساب - فيسبوك..</div>
+            </div>
+        </div>
+
+        <!-- المجتمع -->
+        <div style="margin:30px 15px 0px 15px; height:32px; line-height:32px"
+             class="d-flex justify-content-between">
+            <div></div>
+            <div style="font-size:22px" dir="rtl">المجتمع</div>
+        </div>
+
+        <div style="background-color: white; opacity:0.5"
+             class="d-flex flex-row-reverse _c_tile">
+            <img class="_c_tile_image" src="img/Home/items/3.png">
+
+            <div style="margin: 25px 15px 0px 0px; direction: rtl;">
+                <div style="font-size: 18px; line-height: 18px; height: 18px;">الوظائف</div>
+                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">قريبا..</div>
+            </div>
+        </div>
+
+        <div style="background-color: cornsilk; opacity:0.5"
+             class="d-flex flex-row-reverse _c_tile">
+            <img class="_c_tile_image" src="img/Home/items/4.png">
+
+            <div style="margin: 25px 15px 0px 0px; direction: rtl">
+                <div style="font-size: 18px; line-height: 18px; height: 18px;">المنح والتدريب</div>
+                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">قريبا..</div>
+            </div>
+        </div>
+    </div>
+</div>
