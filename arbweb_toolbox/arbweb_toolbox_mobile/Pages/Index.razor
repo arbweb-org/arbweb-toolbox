@@ -1,6 +1,4 @@
 ﻿@page "/"
-@inject NavigationManager r_nav
-@inject IJSRuntime JS
 
 <div style="height:100vh; max-height:100vh; text-align:right; overflow: hidden"
      class="d-flex flex-column">
@@ -45,7 +43,7 @@
         </div>
 
         <div style="background-color: aliceblue"
-             class="d-flex flex-row-reverse _c_tile">
+             class="d-flex flex-row-reverse _c_tile" @onclick="v_click">
             <img class="_c_tile_image" src="img/Home/items/1.png">
 
             <div style="margin: 25px 15px 0px 0px; direction: rtl;">

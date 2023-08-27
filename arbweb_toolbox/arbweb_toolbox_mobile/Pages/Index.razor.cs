@@ -1,7 +1,12 @@
-﻿namespace arbweb_toolbox_mobile.Pages
+﻿using Microsoft.AspNetCore.Components;
+
+namespace arbweb_toolbox_mobile.Pages
 {
     public partial class Index
     {
+        [Inject]
+        NavigationManager g_nav { get; set; }
+
         string[] r_itm { get; set; } = new string[]
         {
             "الكل",
@@ -24,6 +29,11 @@
                 default:
                     return "whitesmoke";
             }
+        }
+
+        void v_click()
+        {
+            g_nav.NavigateTo("Codes");
         }
     }
 }
