@@ -1,9 +1,28 @@
 ﻿@page "/Codes"
 
-<div style="padding:10px">
-    <div class="_c_input_box" style="margin:10px">
-        <input class="_c_borderlessinp" type="text" style="width:100%" placeholder="+20xxxxxxxxxx"/>
-    </div>
 
-    <div class="_c_button" style="margin-top:20px">محادثة</div>
+<div style="padding:10px">
+    @if (IsDebug())
+    {
+        <div class="_c_input_box" style="margin:10px">
+            @(r_msg)
+        </div>
+    }
+
+    @for (int i_lst = 0; i_lst < r_lst.Count; i_lst++)
+    {
+        <div class="_c_input_box" style="margin:10px; direction:rtl">
+            <select value="@(i_lst.ToString() + "-" + r_lst[i_lst].g_val)"
+            @onchange="@v_selected">
+                <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر تصنيف</option>
+
+                @for (int i_opt = 0; i_opt < r_lst[i_lst].g_opt.Count; i_opt++)
+                {
+                    <option value="@(i_lst.ToString() + "-" + i_opt)">@(r_lst[i_lst].g_opt[i_opt])</option>
+                }
+            </select>
+        </div>
+    }
+
+    <div class="_c_button" style="margin-top:20px" @onclick="v_dial">محادثة</div>
 </div>
