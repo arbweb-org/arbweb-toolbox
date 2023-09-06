@@ -10,10 +10,22 @@ namespace arbweb_toolbox_mobile.Pages
         static MainPage r_mpg = (MainPage)Application.Current.MainPage;
 
         // List of listboxes
-        List<(_c_codes g_cod, List<string> g_opt, string g_val)> r_lst = 
+        List<(_c_codes g_cod, List<string> g_opt, string g_val)> r_lst { get; set; } = 
             new List<(_c_codes, List<string>, string)> ();
 
-        string r_msg = "Start";
+        // Short code to dial
+        string r_val { get; set; } = string.Empty;
+
+        // Phone number
+        string r_phn { get; set; } = string.Empty;
+
+        // Amount
+        string r_amt { get; set; } = string.Empty;
+
+        // PIN
+        string r_pin { get; set; } = string.Empty;
+
+        string r_msg { get; set; } = "Start";
 
         // Initialize
         protected override async Task OnInitializedAsync()
@@ -49,6 +61,16 @@ namespace arbweb_toolbox_mobile.Pages
 
         async Task v_add_node(_c_codes p_cod)
         {
+            if (p_cod.g_val == null) 
+            {
+                r_val = string.Empty;
+            }
+            else
+            {
+                r_val = p_cod.g_val;
+                return;
+            }
+
             if (p_cod.g_chd == null) { return; }
 
             List<string> l_opt = (from i_opt in p_cod.g_chd
@@ -75,7 +97,12 @@ namespace arbweb_toolbox_mobile.Pages
 
         async Task v_dial()
         {
+            string l_val = r_val.
+                Replace("📞", r_phn).
+                Replace("💰", r_amt).
+                Replace("🔑", r_pin);
 
+            await r_mpg.v_dial(l_val);
         }
     }
 }

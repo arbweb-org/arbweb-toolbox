@@ -6,7 +6,7 @@ namespace arbweb_toolbox_mobile.Models
     {
         [JsonPropertyName("العنوان")]
         public string g_ttl { get; set; }
-        [JsonPropertyName("القيمة")]
+        [JsonPropertyName("الرمز")]
         public string g_val { get; set; }
         [JsonPropertyName("العناصر")]
         public _c_codes[] g_chd { get; set; }

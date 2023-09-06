@@ -9,17 +9,17 @@ namespace arbweb_toolbox_mobile
             InitializeComponent();
         }
 
-        public async Task v_msg(string p_msg) 
+        public async Task v_msg(string p_msg)
         {
             await DisplayAlert("صندوق الأدوات", p_msg, "تم");
         }
 
-        public async Task<string> f_sheet(string p_ttl, string[] p_opt) 
+        public async Task<string> f_sheet(string p_ttl, string[] p_opt)
         {
             return await DisplayActionSheet(p_ttl, "إلغاء", null, p_opt);
         }
 
-        public async Task<string> f_contact() 
+        public async Task<string> f_contact()
         {
             try
             {
@@ -34,7 +34,7 @@ namespace arbweb_toolbox_mobile
                 string[] l_phn = (from i_phn in l_lst
                                   select i_phn.PhoneNumber.Replace(" ", string.Empty)).ToArray();
 
-                return await f_sheet("اختر رقم الهاتف", l_phn);                    
+                return await f_sheet("اختر رقم الهاتف", l_phn);
             }
             catch (Exception p_exp)
             {
@@ -42,7 +42,10 @@ namespace arbweb_toolbox_mobile
             }
         }
 
-        public async Task v_dial(string p_num) { }
+        public async Task v_dial(string p_num)
+        {
+            PhoneDialer.Default.Open(p_num);
+        }
 
         public async Task<string> f_json(string p_nam)
         {

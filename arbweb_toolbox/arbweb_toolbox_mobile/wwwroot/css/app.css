@@ -70,7 +70,8 @@ select {
     border: none !important;
     border-color: transparent !important;
     outline: none !important;
-    user-select: text
+    user-select: text;
+    width: 100%
 }
 
 ::-webkit-input-placeholder {
@@ -106,7 +107,7 @@ input[type="radio"], input[type="checkbox"] {
     border-radius: 5px;
     padding: 5px;
     padding-top: 7px;
-    margin-bottom: 5px;
+    margin: 10px;
     font-weight: normal !important;
     height: 40px;
 }

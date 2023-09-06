@@ -4,17 +4,17 @@
 <div style="padding:10px">
     @if (IsDebug())
     {
-        <div class="_c_input_box" style="margin:10px">
+        <div class="_c_input_box">
             @(r_msg)
         </div>
     }
 
     @for (int i_lst = 0; i_lst < r_lst.Count; i_lst++)
     {
-        <div class="_c_input_box" style="margin:10px; direction:rtl">
+        <div class="_c_input_box" style="direction:rtl">
             <select value="@(i_lst.ToString() + "-" + r_lst[i_lst].g_val)"
             @onchange="@v_selected">
-                <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر تصنيف</option>
+                <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر ⮟</option>
 
                 @for (int i_opt = 0; i_opt < r_lst[i_lst].g_opt.Count; i_opt++)
                 {
@@ -24,5 +24,32 @@
         </div>
     }
 
-    <div class="_c_button" style="margin-top:20px" @onclick="v_dial">محادثة</div>
+    @if (r_val.Contains("📞"))
+    {
+        <!-- رقم التليفون -->
+        <div class="_c_input_box">
+            <input @bind=r_phn @bind:event="onchange"
+            class="_c_borderlessinp" type="tel" placeholder="+20**********" />
+        </div>
+    }
+
+    @if (r_val.Contains("💰"))
+    {
+        <!-- القيمة -->
+        <div class="_c_input_box">
+            <input @bind=r_amt @bind:event="onchange" 
+            class="_c_borderlessinp" type="number" placeholder="القيمة" />
+        </div>
+    }
+
+    @if (r_val.Contains("🔑"))
+    {
+        <!-- الرقم السري -->
+        <div class="_c_input_box">
+            <input @bind=r_pin @bind:event="onchange"
+            class="_c_borderlessinp" type="password" placeholder="الرقم السري" />
+        </div>
+    }
+
+    <div class="_c_button" style="margin-top:20px" @onclick="v_dial">📞</div>
 </div>
