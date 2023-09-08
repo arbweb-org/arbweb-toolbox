@@ -93,6 +93,9 @@ namespace arbweb_toolbox_mobile.Pages
 
             // Add node
             await v_add_node(l_cod);
+
+            // Refresh
+            StateHasChanged();
         }
 
         async Task v_dial()
@@ -100,7 +103,8 @@ namespace arbweb_toolbox_mobile.Pages
             string l_val = r_val.
                 Replace("📞", r_phn).
                 Replace("💰", r_amt).
-                Replace("🔑", r_pin);
+                Replace("🔑", r_pin).
+                Replace("#", "%23");
 
             await r_mpg.v_dial(l_val);
         }

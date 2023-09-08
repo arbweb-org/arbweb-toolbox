@@ -44,7 +44,7 @@ namespace arbweb_toolbox_mobile
 
         public async Task v_dial(string p_num)
         {
-            PhoneDialer.Default.Open(p_num);
+            await Launcher.OpenAsync("tel:" + p_num);
         }
 
         public async Task<string> f_json(string p_nam)
