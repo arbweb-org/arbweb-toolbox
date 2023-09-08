@@ -5,6 +5,8 @@ using System.Text.Json;
 
 namespace arbweb_toolbox_mobile.Pages
 {
+    class _c_code_vars { public string g_phn, g_amt, g_pin; }
+
     public partial class Codes
     {
         static MainPage r_mpg = (MainPage)Application.Current.MainPage;
@@ -13,17 +15,11 @@ namespace arbweb_toolbox_mobile.Pages
         List<(_c_codes g_cod, List<string> g_opt, string g_val)> r_lst { get; set; } = 
             new List<(_c_codes, List<string>, string)> ();
 
-        // Short code to dial
+        // Short code template to dial
         string r_val { get; set; } = string.Empty;
 
-        // Phone number
-        string r_phn { get; set; } = string.Empty;
-
-        // Amount
-        string r_amt { get; set; } = string.Empty;
-
-        // PIN
-        string r_pin { get; set; } = string.Empty;
+        // Short code variables to dial
+        _c_code_vars r_vrs = new _c_code_vars ();
 
         string r_msg { get; set; } = "Start";
 
@@ -101,9 +97,9 @@ namespace arbweb_toolbox_mobile.Pages
         async Task v_dial()
         {
             string l_val = r_val.
-                Replace("📞", r_phn).
-                Replace("💰", r_amt).
-                Replace("🔑", r_pin).
+                Replace("📞", r_vrs.g_phn).
+                Replace("💰", r_vrs.g_amt).
+                Replace("🔑", r_vrs.g_pin).
                 Replace("#", "%23");
 
             await r_mpg.v_dial(l_val);

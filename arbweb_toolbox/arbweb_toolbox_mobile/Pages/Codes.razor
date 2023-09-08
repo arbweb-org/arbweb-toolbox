@@ -14,7 +14,7 @@
         <div class="_c_input_box" style="direction:rtl">
             <select value="@(i_lst.ToString() + "-" + r_lst[i_lst].g_val)"
             @onchange="@v_selected">
-                <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر ⮟</option>
+                <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر من القائمة</option>
 
                 @for (int i_opt = 0; i_opt < r_lst[i_lst].g_opt.Count; i_opt++)
                 {
@@ -28,7 +28,7 @@
     {
         <!-- رقم التليفون -->
         <div class="_c_input_box">
-            <input @bind=r_phn @bind:event="onchange"
+            <input @bind=r_vrs.g_phn @bind:event="onchange"
             class="_c_borderlessinp" type="tel" placeholder="+20**********" />
         </div>
     }
@@ -37,8 +37,8 @@
     {
         <!-- القيمة -->
         <div class="_c_input_box">
-            <input @bind=r_amt @bind:event="onchange" 
-            class="_c_borderlessinp" type="number" placeholder="القيمة" />
+            <input @bind=r_vrs.g_amt @bind:event="onchange"
+                   class="_c_borderlessinp" type="number" placeholder="القيمة" />
         </div>
     }
 
@@ -46,7 +46,7 @@
     {
         <!-- الرقم السري -->
         <div class="_c_input_box">
-            <input @bind=r_pin @bind:event="onchange"
+            <input @bind=r_vrs.g_pin @bind:event="onchange"
             class="_c_borderlessinp" type="password" placeholder="الرقم السري" />
         </div>
     }
