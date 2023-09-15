@@ -1,0 +1,19 @@
+﻿@inherits _c_component
+
+<div class="_c_input_box d-flex">
+    <input @bind=g_pin @bind:event="oninput" disabled=@(!r_edt)
+           class="_c_borderlessinp flex-grow-1" type="password" placeholder="الرقم السري" />
+    @if (r_edt && string.IsNullOrWhiteSpace(g_pin))
+    {
+        <i class="fa-solid fa-key" @onclick=v_select_pin></i>
+    }
+    else if (r_edt)
+    {
+        <i class="fa-solid fa-floppy-disk" @onclick=v_add_pin></i>
+    }
+    else
+    {
+        <i class="fa-solid fa-pen-to-square" @onclick=v_edit></i>
+        <i class="fa-solid fa-trash" @onclick=v_delete></i>
+    }
+</div>

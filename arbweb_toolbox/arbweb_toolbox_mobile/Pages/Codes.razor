@@ -4,7 +4,7 @@
 <div style="padding:10px">
     @if (IsDebug())
     {
-        <div class="_c_input_box">
+        <div class="_c_input_box d-flex">
             @(r_msg)
         </div>
     }
@@ -16,9 +16,9 @@
             @onchange="@v_selected">
                 <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر من القائمة</option>
 
-                @for (int i_opt = 0; i_opt < r_lst[i_lst].g_opt.Count; i_opt++)
+                @for (int i_opt = 0; i_opt < r_lst[i_lst].g_chd.Count; i_opt++)
                 {
-                    <option value="@(i_lst.ToString() + "-" + i_opt)">@(r_lst[i_lst].g_opt[i_opt])</option>
+                    <option value="@(i_lst.ToString() + "-" + i_opt)">@(r_lst[i_lst].g_chd[i_opt])</option>
                 }
             </select>
         </div>
@@ -27,29 +27,25 @@
     @if (r_val.Contains("📞"))
     {
         <!-- رقم التليفون -->
-        <div class="_c_input_box">
-            <input @bind=r_vrs.g_phn @bind:event="onchange"
-            class="_c_borderlessinp" type="tel" placeholder="+20**********" />
-        </div>
+        <FieldPhone></FieldPhone>
     }
 
     @if (r_val.Contains("💰"))
     {
         <!-- القيمة -->
-        <div class="_c_input_box">
-            <input @bind=r_vrs.g_amt @bind:event="onchange"
-                   class="_c_borderlessinp" type="number" placeholder="القيمة" />
+        <div class="_c_input_box d-flex">
+            <input @bind=r_vrs.g_amt @bind:event="oninput"
+            class="_c_borderlessinp flex-grow-1" type="number" placeholder="القيمة" />
         </div>
     }
 
     @if (r_val.Contains("🔑"))
     {
         <!-- الرقم السري -->
-        <div class="_c_input_box">
-            <input @bind=r_vrs.g_pin @bind:event="onchange"
-            class="_c_borderlessinp" type="password" placeholder="الرقم السري" />
-        </div>
+        <FieldPIN></FieldPIN>
     }
 
-    <div class="_c_button" style="margin-top:20px" @onclick="v_dial">📞</div>
+    <div class="_c_button" @onclick="v_dial">
+        <i class="fa-solid fa-phone"></i>
+    </div>
 </div>

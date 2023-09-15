@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace arbweb_toolbox_mobile
+﻿namespace arbweb_toolbox_mobile
 {
     public static class MauiProgram
     {
@@ -13,13 +11,11 @@ namespace arbweb_toolbox_mobile
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
-
             builder.Services.AddMauiBlazorWebView();
-
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
-            builder.Logging.AddDebug();
 #endif
+
             return builder.Build();
         }
     }

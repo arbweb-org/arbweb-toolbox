@@ -70,8 +70,7 @@ select {
     border: none !important;
     border-color: transparent !important;
     outline: none !important;
-    user-select: text;
-    width: 100%
+    user-select: text
 }
 
 ::-webkit-input-placeholder {
@@ -94,12 +93,12 @@ input[type="radio"], input[type="checkbox"] {
     border-width: 2px;
     border-radius: 20px;
     font-size: 16px;
-    
     background-color: gold;
     height: 40px;
     margin: 10px;
     line-height: 40px;
     text-align: center;
+    margin-top: 20px
 }
 
 ._c_input_box {
@@ -169,4 +168,10 @@ input[type="radio"], input[type="checkbox"] {
     object-fit: cover;
     border-radius: 10px;
     margin: 8px
+}
+
+[class*="fa-solid"] {
+    width: 26px;
+    text-align: center;
+    padding: 4px
 }

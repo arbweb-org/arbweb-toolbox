@@ -12,14 +12,14 @@ namespace arbweb_toolbox_mobile.Pages
         static MainPage r_mpg = (MainPage)Application.Current.MainPage;
 
         // List of listboxes
-        List<(_c_codes g_cod, List<string> g_opt, string g_val)> r_lst { get; set; } = 
+        List<(_c_codes g_cod, List<string> g_chd, string g_val)> r_lst { get; set; } = 
             new List<(_c_codes, List<string>, string)> ();
 
         // Short code template to dial
         string r_val { get; set; } = string.Empty;
 
         // Short code variables to dial
-        _c_code_vars r_vrs = new _c_code_vars ();
+        _c_code_vars r_vrs { get; set; } = new _c_code_vars();        
 
         string r_msg { get; set; } = "Start";
 
@@ -83,7 +83,7 @@ namespace arbweb_toolbox_mobile.Pages
 
             // Clear lists
             r_lst = r_lst.Take(l_lst + 1).ToList();
-            r_lst[l_lst] = (r_lst[l_lst].g_cod, r_lst[l_lst].g_opt, l_opt.ToString());
+            r_lst[l_lst] = (r_lst[l_lst].g_cod, r_lst[l_lst].g_chd, l_opt.ToString());
 
             _c_codes l_cod = r_lst[l_lst].g_cod.g_chd[l_opt];
 

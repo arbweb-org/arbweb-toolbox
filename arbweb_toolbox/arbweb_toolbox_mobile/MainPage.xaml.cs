@@ -11,7 +11,19 @@ namespace arbweb_toolbox_mobile
 
         public async Task v_msg(string p_msg)
         {
-            await DisplayAlert("صندوق الأدوات", p_msg, "تم");
+            await DisplayAlert("صندوق الأدوات", p_msg, "تم", FlowDirection.RightToLeft);
+        }
+
+        public async Task<Boolean> f_confirm(string p_msg, string p_cnf) 
+        {
+            return await DisplayAlert("صندوق الأدوات", p_msg, p_cnf, "إلغاء", FlowDirection.RightToLeft);
+        }
+
+        public async Task<(string g_res, Boolean g_rtr)> f_prompt(string p_ttl, string p_msg, string g_scd)
+        {
+            string l_res = await DisplayPromptAsync(p_ttl, p_msg, g_scd, "إلغاء");
+
+            return (l_res, !(string.IsNullOrWhiteSpace(l_res)));
         }
 
         public async Task<string> f_sheet(string p_ttl, string[] p_opt)
@@ -34,7 +46,13 @@ namespace arbweb_toolbox_mobile
                 string[] l_phn = (from i_phn in l_lst
                                   select i_phn.PhoneNumber.Replace(" ", string.Empty)).ToArray();
 
-                return await f_sheet("اختر رقم الهاتف", l_phn);
+                string l_res = await f_sheet("اختر رقم الهاتف", l_phn);
+                if (string.IsNullOrWhiteSpace(l_res)) { return string.Empty; }
+
+                char l_chr = l_res[0];
+                if (!(char.IsDigit(l_chr) || l_chr == '+')) { return string.Empty; }
+
+                return l_res;
             }
             catch (Exception p_exp)
             {
@@ -56,11 +74,26 @@ namespace arbweb_toolbox_mobile
 
                 return reader.ReadToEnd();
             }
-            catch (Exception ex)
-            {
-                return "";
-            }
+            catch { }
 
+            return null;
+        }
+
+        public async Task<string> f_get_secure(string g_key)
+        {
+            try
+            {
+                return await SecureStorage.Default.GetAsync(g_key);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task v_set_secure(string p_key, string p_val)
+        {
+            await SecureStorage.Default.SetAsync(p_key, p_val);
         }
     }
 }
