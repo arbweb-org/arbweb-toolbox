@@ -1,51 +1,40 @@
 ﻿@page "/Codes"
 
-
 <div style="padding:10px">
     @if (IsDebug())
     {
-        <div class="_c_input_box d-flex">
+        <div class="_c_input_box">
             @(r_msg)
         </div>
     }
 
-    @for (int i_lst = 0; i_lst < r_lst.Count; i_lst++)
+    @for (int i_ndx = 0; i_ndx < r_lst.Count; i_ndx++)
     {
-        <div class="_c_input_box" style="direction:rtl">
-            <select value="@(i_lst.ToString() + "-" + r_lst[i_lst].g_val)"
-            @onchange="@v_selected">
-                <option disabled selected value="@(i_lst.ToString() + "-")" style="color:blue">اختر من القائمة</option>
-
-                @for (int i_opt = 0; i_opt < r_lst[i_lst].g_chd.Count; i_opt++)
-                {
-                    <option value="@(i_lst.ToString() + "-" + i_opt)">@(r_lst[i_lst].g_chd[i_opt])</option>
-                }
-            </select>
-        </div>
+        <FieldList g_ndx=@i_ndx.ToString()
+                   g_val=@(i_ndx.ToString() + "-" + r_lst[i_ndx].g_val)
+                   g_opt=@r_lst[i_ndx].g_chd
+                   g_valChanged=@v_selected></FieldList>
     }
 
     @if (r_val.Contains("📞"))
     {
         <!-- رقم التليفون -->
-        <FieldPhone></FieldPhone>
+        <FieldPhone @bind-g_val=@r_vrs.g_phn></FieldPhone>
     }
 
     @if (r_val.Contains("💰"))
     {
         <!-- القيمة -->
-        <div class="_c_input_box d-flex">
-            <input @bind=r_vrs.g_amt @bind:event="oninput"
-            class="_c_borderlessinp flex-grow-1" type="number" placeholder="القيمة" />
-        </div>
+        <FieldAmount @bind-g_val=@r_vrs.g_amt></FieldAmount>
     }
 
     @if (r_val.Contains("🔑"))
     {
         <!-- الرقم السري -->
-        <FieldPIN></FieldPIN>
+        <FieldPIN @bind-g_val=@r_vrs.g_pin></FieldPIN>
     }
 
-    <div class="_c_button" @onclick="v_dial">
+    <div class="_c_button" @onclick=@v_dial>
         <i class="fa-solid fa-phone"></i>
     </div>
 </div>

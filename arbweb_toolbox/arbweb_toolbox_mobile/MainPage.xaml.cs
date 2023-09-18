@@ -54,8 +54,8 @@ namespace arbweb_toolbox_mobile
 
                 return l_res;
             }
-            catch (Exception p_exp)
-            {
+            catch 
+            { 
                 return string.Empty;
             }
         }

@@ -4,7 +4,6 @@ namespace arbweb_toolbox_mobile.Components
 {
     public partial class FieldPIN : _c_component
     {
-        public string g_pin { get; set; }
         // No saved PIN is selected, can edit input
         Boolean r_edt { get; set; } = true;
         // Saved PINs
@@ -15,7 +14,7 @@ namespace arbweb_toolbox_mobile.Components
         {
             if (r_pns != null) { return; }
 
-            string l_jsn = await r_mpg.f_get_secure("saved_pins").ConfigureAwait(false);
+            string l_jsn = await r_mpg.f_get_secure("saved_pins");
             if (string.IsNullOrEmpty(l_jsn))
             {
                 r_pns = new Dictionary<string, string>();
@@ -30,7 +29,7 @@ namespace arbweb_toolbox_mobile.Components
         async Task v_save_pins()
         {
             string l_jsn = JsonSerializer.Serialize(r_pns);
-            await SecureStorage.Default.SetAsync("saved_pins", l_jsn).ConfigureAwait(false);
+            await SecureStorage.Default.SetAsync("saved_pins", l_jsn);
         }
 
         async Task v_add_pin()
@@ -40,12 +39,17 @@ namespace arbweb_toolbox_mobile.Components
             var l_prm = await r_mpg.f_prompt("الاسم", "اختر عنوانا لكلمة المرور", "حفظ");
             if (!l_prm.g_rtr) { return; }
 
+            if (r_pns.ContainsKey(l_prm.g_res)) 
+            {
+                await r_mpg.v_msg("الاسم موجود بالفعل");
+                return;
+            }
+
             r_key = l_prm.g_res;
-            r_pns.Add(r_key, g_pin);
+            r_pns.Add(r_key, g_val);
             await v_save_pins();
 
             r_edt = false;
-            StateHasChanged();
         }
 
         async Task v_select_pin()
@@ -59,17 +63,15 @@ namespace arbweb_toolbox_mobile.Components
             if (!(l_val.StartsWith("□"))) { return; }
 
             r_key = l_val.Substring(2);
-            g_pin = r_pns[r_key];
+            g_val = r_pns[r_key];
 
             r_edt = false;
-            StateHasChanged();
         }
-        
+
         async Task v_edit()
         {
-            g_pin = string.Empty;
+            g_val = string.Empty;
             r_edt = true;
-            StateHasChanged();
         }
 
         async Task v_delete()
@@ -80,9 +82,8 @@ namespace arbweb_toolbox_mobile.Components
             r_pns.Remove(r_key);
             await v_save_pins();
 
-            g_pin = string.Empty;
+            g_val = string.Empty;
             r_edt = true;
-            StateHasChanged();
         }
     }
 }

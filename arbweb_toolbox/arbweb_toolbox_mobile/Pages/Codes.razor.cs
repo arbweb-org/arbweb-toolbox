@@ -1,27 +1,26 @@
 ﻿using arbweb_toolbox_mobile.Models;
-using Microsoft.AspNetCore.Components;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 
 namespace arbweb_toolbox_mobile.Pages
 {
-    class _c_code_vars { public string g_phn, g_amt, g_pin; }
-
     public partial class Codes
     {
+        class _c_code_vars { public string g_phn, g_amt, g_pin; }
+
         static MainPage r_mpg = (MainPage)Application.Current.MainPage;
 
         // List of listboxes
-        List<(_c_codes g_cod, List<string> g_chd, string g_val)> r_lst { get; set; } = 
-            new List<(_c_codes, List<string>, string)> ();
+        List<(_c_codes g_cod, List<string> g_chd, string g_val)> r_lst { get; set; } =
+            new List<(_c_codes, List<string>, string)>();
 
         // Short code template to dial
         string r_val { get; set; } = string.Empty;
 
         // Short code variables to dial
-        _c_code_vars r_vrs { get; set; } = new _c_code_vars();        
+        _c_code_vars r_vrs { get; set; } = new _c_code_vars();
 
-        string r_msg { get; set; } = "Start";
+        string r_msg { get; set; } = "Loaded";
 
         // Initialize
         protected override async Task OnInitializedAsync()
@@ -31,6 +30,11 @@ namespace arbweb_toolbox_mobile.Pages
 
             // Add node
             await v_add_node(l_cod);
+
+            if (IsDebug())
+            {
+                r_val = "📞💰🔑";
+            }
         }
 
         public static bool IsDebug()
@@ -57,7 +61,7 @@ namespace arbweb_toolbox_mobile.Pages
 
         async Task v_add_node(_c_codes p_cod)
         {
-            if (p_cod.g_val == null) 
+            if (p_cod.g_val == null)
             {
                 r_val = string.Empty;
             }
@@ -75,11 +79,11 @@ namespace arbweb_toolbox_mobile.Pages
             r_lst.Add((p_cod, l_opt, string.Empty));
         }
 
-        async Task v_selected(ChangeEventArgs p_arg)
+        async Task v_selected(string p_arg)
         {
-            string[] l_val = p_arg.Value.ToString().Split("-");
-            int l_lst = int.Parse(l_val[0]);
-            int l_opt = int.Parse(l_val[1]);
+            string[] l_rgs = p_arg.Split("-");
+            int l_lst = int.Parse(l_rgs[0]);
+            int l_opt = int.Parse(l_rgs[1]);
 
             // Clear lists
             r_lst = r_lst.Take(l_lst + 1).ToList();
@@ -90,8 +94,8 @@ namespace arbweb_toolbox_mobile.Pages
             // Add node
             await v_add_node(l_cod);
 
-            // Refresh
-            StateHasChanged();
+            // Clear vars
+            r_vrs = new _c_code_vars();
         }
 
         async Task v_dial()
@@ -102,7 +106,14 @@ namespace arbweb_toolbox_mobile.Pages
                 Replace("🔑", r_vrs.g_pin).
                 Replace("#", "%23");
 
-            await r_mpg.v_dial(l_val);
+            if (IsDebug())
+            {
+                r_msg = l_val;
+            }
+            else
+            {
+                await r_mpg.v_dial(l_val);
+            }
         }
     }
 }

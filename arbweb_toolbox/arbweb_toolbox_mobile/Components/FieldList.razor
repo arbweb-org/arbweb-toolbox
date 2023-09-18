@@ -1,0 +1,14 @@
+﻿@inherits _c_component
+
+<div class="_c_input_box" style="direction:rtl">
+    <!-- If initial value is null or empty: 1st option is selected -->
+    <select value=@g_val @onchange=@v_val_changed>
+        <option disabled value=@(g_ndx + "-")
+                style="color:blue">اختر من القائمة</option>
+
+        @for (int i_ndx = 0; i_ndx < g_opt.Count; i_ndx++)
+        {
+            <option value=@(g_ndx + "-" + i_ndx.ToString())>@g_opt[i_ndx]</option>
+        }
+    </select>
+</div>
