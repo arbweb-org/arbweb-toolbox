@@ -59,11 +59,12 @@ namespace arbweb_toolbox_mobile.Components
             var l_pns = (from i_pin in r_pns
                          select "□ " + i_pin.Key).ToArray();
 
-            string l_val = await r_mpg.f_sheet("الأرقام السرية المحفوظة", l_pns);
-            if (!(l_val.StartsWith("□"))) { return; }
+            string l_pin = await r_mpg.f_sheet("الأرقام السرية المحفوظة", l_pns);
+            if (!(l_pin.StartsWith("□"))) { return; }
 
-            r_key = l_val.Substring(2);
-            g_val = r_pns[r_key];
+            r_key = l_pin.Substring(2);
+            var l_val = r_pns[r_key];
+            await g_valChanged.InvokeAsync(l_val);
 
             r_edt = false;
         }

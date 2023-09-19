@@ -1,7 +1,7 @@
 ﻿@inherits _c_component
 
 <div class="_c_input_box d-flex">
-    <input value=@g_val @oninput=@v_val_changed
+    <input value=@g_val @onchange=@v_val_changed
            class="_c_borderlessinp flex-grow-1" type="tel" placeholder="رقم الهاتف" />
     <i class="fa-solid fa-address-book" @onclick=@v_select_phone></i>
 </div>
