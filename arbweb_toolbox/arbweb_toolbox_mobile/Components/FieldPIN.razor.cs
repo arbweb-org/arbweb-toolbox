@@ -39,7 +39,7 @@ namespace arbweb_toolbox_mobile.Components
             var l_prm = await r_mpg.f_prompt("الاسم", "اختر عنوانا لكلمة المرور", "حفظ");
             if (!l_prm.g_rtr) { return; }
 
-            if (r_pns.ContainsKey(l_prm.g_res)) 
+            if (r_pns.ContainsKey(l_prm.g_res))
             {
                 await r_mpg.v_msg("الاسم موجود بالفعل");
                 return;
@@ -64,15 +64,15 @@ namespace arbweb_toolbox_mobile.Components
 
             r_key = l_pin.Substring(2);
             var l_val = r_pns[r_key];
-            await g_valChanged.InvokeAsync(l_val);
 
             r_edt = false;
+            await g_valChanged.InvokeAsync(l_val);
         }
 
         async Task v_edit()
         {
-            g_val = string.Empty;
             r_edt = true;
+            await g_valChanged.InvokeAsync(string.Empty);
         }
 
         async Task v_delete()
@@ -83,8 +83,8 @@ namespace arbweb_toolbox_mobile.Components
             r_pns.Remove(r_key);
             await v_save_pins();
 
-            g_val = string.Empty;
             r_edt = true;
+            await g_valChanged.InvokeAsync(string.Empty);
         }
     }
 }

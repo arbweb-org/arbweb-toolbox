@@ -112,6 +112,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 ._c_page {
+    padding: 10px
 }
 
 ._c_mono {
