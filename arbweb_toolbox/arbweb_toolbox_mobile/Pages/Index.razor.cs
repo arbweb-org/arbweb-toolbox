@@ -31,9 +31,9 @@ namespace arbweb_toolbox_mobile.Pages
             }
         }
 
-        void v_click()
+        async Task v_nav(string p_pag)
         {
-            g_nav.NavigateTo("Codes");
+            g_nav.NavigateTo(p_pag);            
         }
     }
 }

@@ -8,6 +8,10 @@ namespace arbweb_toolbox_mobile.Components
         [Parameter]
         public string g_val { get; set; }
         [Parameter]
+        public string g_plc { get; set; } // Placeholder
+        [Parameter]
+        public Boolean g_rtl { get; set; } = true; // Right to left?
+        [Parameter]
         public EventCallback<string> g_valChanged { get; set; }
 
         public async Task v_val_changed(ChangeEventArgs p_arg)

@@ -1,11 +1,11 @@
 ﻿@page "/Codes"
 
 <div class="_c_page">
+    <NavBar g_val="الرموز المختصرة"></NavBar>
+
     @if (IsDebug())
     {
-        <div class="_c_input_box">
-            @(r_msg)
-        </div>
+        <div class="_c_input_box" style="display:none">@(r_msg)</div>       
     }
 
     @for (int i_ndx = 0; i_ndx < r_lst.Count; i_ndx++)
