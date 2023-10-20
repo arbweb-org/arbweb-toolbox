@@ -90,20 +90,18 @@ input[type="radio"], input[type="checkbox"] {
     font-family: 'DroidNaskh'
 }
 
-._c_search_item {
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 15px;
-    padding: 7px 20px 0px 20px;
-    height: 30px;
-    line-height: 14px;
-    font-size: 14px;
-    display: inline-block;
-    margin-left: 10px
-}
-
 ._c_invisible_scroll {
     scrollbar-width: none;
+}
+
+._c_horizontal_scroll {
+    overflow-x: scroll;
+    direction: rtl
+}
+
+._c_vertical_scroll {
+    overflow-x: hidden;
+    overflow-y: scroll
 }
 
     ._c_invisible_scroll::-webkit-scrollbar {

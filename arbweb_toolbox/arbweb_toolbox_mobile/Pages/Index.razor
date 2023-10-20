@@ -1,27 +1,23 @@
 ﻿@page "/"
 
-<div style="height:100vh; max-height:100vh; text-align:right; overflow: hidden"
-     class="d-flex flex-column">
+<div class="d-flex flex-column _c_home_page">
     <!-- عنوان الصفحة وزر القائمة -->
-    <div style="margin:15px; height:32px; line-height:32px"
-         class="d-flex flex-row-reverse align-items-center">
-        <img src="img/profile.svg" style="width:32px; border-radius:16px" />
-        <div style="height:18px; line-height:18px; font-size: 18px; margin: 0px 15px 0px 15px">الرئيسية</div>
+    <div class="d-flex flex-row-reverse align-items-center _c_top_bar">
+        <img src="img/profile.svg" class="_c_fly_icon" />
+        <div class="_c_page_title">الرئيسية</div>
     </div>
 
     <!-- صندوق البحث -->
-    <div style="margin: 40px 15px 5px 15px; height: 50px;line-height: 50px;background-color: aliceblue;border-radius: 25px;border-style: solid;border-width: 2px;"
-         class="d-flex justify-content-between">
-        <div style="padding: 0px 0px 0px 15px;">
+    <div class="d-flex justify-content-between _c_search_box">
+        <div class="_c_search_icon">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <input type="text" placeholder="إبحث عن أداة" class="_c_borderlessinp" style="width: 100%; height: 30px; margin: 8px 15px 0px 0px; font-size: 20px; text-align: right; direction: rtl">
+        <input type="text" placeholder="إبحث عن أداة" class="_c_borderlessinp _c_search_input">
     </div>
 
     <!-- اقتراحات البحث -->
-    <div style="overflow-x:scroll; direction: rtl"
-         class="_c_invisible_scroll">
-        <div style="margin: 15px; width: max-content; font-size:0px">
+    <div class="_c_invisible_scroll _c_horizontal_scroll">
+        <div class="_c_search_items_box">
             @for (var i_ndx = 0; i_ndx < r_itm.Length; i_ndx++)
             {
                 <div class="_c_search_item"
@@ -33,13 +29,10 @@
     </div>
 
     <!-- الأدوات -->
-    <div class="_c_invisible_scroll flex-grow-1"
-         style="overflow-x: hidden; overflow-y:scroll">
+    <div class="_c_invisible_scroll _c_vertical_scroll flex-grow-1">
         <!-- الهاتف والاتصال -->
-        <div style="margin:30px 15px 0px 15px; height:32px; line-height:32px"
-             class="d-flex justify-content-between">
-            <div></div>
-            <div style="font-size:22px" dir="rtl">الهاتف والاتصال</div>
+        <div class="_c_title_box">
+            الهاتف والاتصال
         </div>
 
         <div style="background-color: aliceblue"
@@ -63,14 +56,12 @@
         </div>
 
         <!-- المجتمع -->
-        <div style="margin:30px 15px 0px 15px; height:32px; line-height:32px"
-             class="d-flex justify-content-between">
-            <div></div>
-            <div style="font-size:22px" dir="rtl">تنظيم المهام</div>
+        <div class="_c_title_box">
+            تنظيم المهام
         </div>
 
         <div style="background-color: white"
-             class="d-flex flex-row-reverse _c_card">
+             class="d-flex flex-row-reverse _c_card" @onclick='async() => { await v_nav("Notes"); }'>
             <img class="_c_card_image" src="img/Home/items/3.png">
 
             <div class="_c_card_text">
