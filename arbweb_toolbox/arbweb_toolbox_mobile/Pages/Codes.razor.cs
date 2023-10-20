@@ -1,6 +1,5 @@
 ﻿using arbweb_toolbox_mobile.Models;
-using System.Text.Encodings.Web;
-using System.Text.Json;
+using System.Net.Http.Json;
 
 namespace arbweb_toolbox_mobile.Pages
 {
@@ -26,15 +25,10 @@ namespace arbweb_toolbox_mobile.Pages
         protected override async Task OnInitializedAsync()
         {
             // Load codes from json file
-            _c_codes l_cod = await f_saved_codes();
+            _c_codes l_cod = await f_get_codes();
 
             // Add node
             await v_add_node(l_cod);
-
-            if (IsDebug())
-            {
-                r_val = "📞💰🔑";
-            }
         }
 
         public static bool IsDebug()
@@ -46,17 +40,18 @@ namespace arbweb_toolbox_mobile.Pages
 #endif
         }
 
-        async Task<_c_codes> f_saved_codes()
+        async Task<_c_codes> f_get_codes()
         {
-            string l_jsn = await r_mpg.f_json("codes");
-
             _c_codes l_cod = new _c_codes();
 
-            JsonSerializerOptions l_opt = new JsonSerializerOptions();
-            l_opt.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
-            l_opt.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault;
+            using HttpClient l_cln = new HttpClient();
+            try
+            {
+                l_cod = await l_cln.GetFromJsonAsync<_c_codes>("https://toolbox.arbweb.org/codes.json");
+            }
+            catch { }
 
-            return JsonSerializer.Deserialize<_c_codes>(l_jsn, l_opt);
+            return l_cod;
         }
 
         async Task v_add_node(_c_codes p_cod)
@@ -112,7 +107,7 @@ namespace arbweb_toolbox_mobile.Pages
             }
             else
             {
-                await r_mpg.v_dial(l_val);
+                await r_mpg.v_launch("tel:" + l_val);
             }
         }
     }

@@ -10,7 +10,7 @@
     </div>
 
     <!-- صندوق البحث -->
-    <div style="margin: 15px; margin-top:40px; height: 50px;line-height: 50px;background-color: aliceblue;border-radius: 25px;border-style: solid;border-width: 2px;"
+    <div style="margin: 40px 15px 5px 15px; height: 50px;line-height: 50px;background-color: aliceblue;border-radius: 25px;border-style: solid;border-width: 2px;"
          class="d-flex justify-content-between">
         <div style="padding: 0px 0px 0px 15px;">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -43,22 +43,22 @@
         </div>
 
         <div style="background-color: aliceblue"
-             class="d-flex flex-row-reverse _c_tile" @onclick='() => { v_nav("Codes"); }'>
-            <img class="_c_tile_image" src="img/Home/items/1.png">
+             class="d-flex flex-row-reverse _c_card" @onclick='async() => { await v_nav("Codes"); }'>
+            <img class="_c_card_image" src="img/Home/items/1.png">
 
-            <div style="margin: 25px 15px 0px 0px; direction: rtl;">
-                <div style="font-size: 18px; line-height: 18px; height: 18px;">الرموز المختصرة</div>
-                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">شحن الرصيد - تحويل الرصيد..</div>
+            <div class="_c_card_text">
+                <div>@(r_itm[1])</div>
+                <div>الرصيد والمحافظ الالكترونية وخدمات أخرى</div>
             </div>
         </div>
 
         <div style="background-color: mintcream;"
-             class="d-flex flex-row-reverse _c_tile" @onclick='() => { v_nav("Chat"); }'>
-            <img class="_c_tile_image" src="img/Home/items/2.png">
+             class="d-flex flex-row-reverse _c_card" @onclick='async() => { await v_nav("Chat"); }'>
+            <img class="_c_card_image" src="img/Home/items/2.png">
 
-            <div style="margin: 25px 15px 0px 0px; direction: rtl;">
-                <div style="font-size: 18px; line-height: 18px; height: 18px;">المحادثة السريعة</div>
-                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">واتساب - فيسبوك..</div>
+            <div class="_c_card_text">
+                <div>@(r_itm[2])</div>
+                <div>ارسل رسالة واتساب بدون تسجيل الرقم</div>
             </div>
         </div>
 
@@ -66,26 +66,16 @@
         <div style="margin:30px 15px 0px 15px; height:32px; line-height:32px"
              class="d-flex justify-content-between">
             <div></div>
-            <div style="font-size:22px" dir="rtl">المجتمع</div>
+            <div style="font-size:22px" dir="rtl">تنظيم المهام</div>
         </div>
 
-        <div style="background-color: white; opacity:0.5"
-             class="d-flex flex-row-reverse _c_tile">
-            <img class="_c_tile_image" src="img/Home/items/3.png">
+        <div style="background-color: white"
+             class="d-flex flex-row-reverse _c_card">
+            <img class="_c_card_image" src="img/Home/items/3.png">
 
-            <div style="margin: 25px 15px 0px 0px; direction: rtl;">
-                <div style="font-size: 18px; line-height: 18px; height: 18px;">الوظائف</div>
-                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">قريبا..</div>
-            </div>
-        </div>
-
-        <div style="background-color: cornsilk; opacity:0.5"
-             class="d-flex flex-row-reverse _c_tile">
-            <img class="_c_tile_image" src="img/Home/items/4.png">
-
-            <div style="margin: 25px 15px 0px 0px; direction: rtl">
-                <div style="font-size: 18px; line-height: 18px; height: 18px;">المنح والتدريب</div>
-                <div style="font-size: 12px; line-height: 12px; height: 12px; margin-top: 8px;">قريبا..</div>
+            <div class="_c_card_text">
+                <div>@(r_itm[3])</div>
+                <div>قم يتنظيم الملاحظات، الأماكن، والصور في مكان واحد</div>
             </div>
         </div>
     </div>

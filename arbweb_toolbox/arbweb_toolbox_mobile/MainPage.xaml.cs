@@ -60,9 +60,9 @@ namespace arbweb_toolbox_mobile
             }
         }
 
-        public async Task v_dial(string p_num)
+        public async Task v_launch(string p_url)
         {
-            await Launcher.OpenAsync("tel:" + p_num);
+            await Launcher.OpenAsync(p_url);
         }
 
         public async Task<string> f_json(string p_nam)

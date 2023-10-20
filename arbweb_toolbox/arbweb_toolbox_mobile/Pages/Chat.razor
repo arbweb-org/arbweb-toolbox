@@ -3,12 +3,12 @@
     <NavBar g_val="المحادثة السريعة"></NavBar>
 
     <!-- الرسالة -->
-    <FieldText g_plc="الرسالة"></FieldText>
+    <FieldText @bind-g_val=@r_msg g_plc="الرسالة"></FieldText>
 
     <!-- المعرف -->
-    <FieldPhone></FieldPhone>
+    <FieldPhone @bind-g_val=@r_phn></FieldPhone>
 
-    <div class="_c_button">
+    <div class="_c_button" @onclick=@v_send>
         <i class="fa-brands fa-whatsapp"></i>
     </div>
 </div>

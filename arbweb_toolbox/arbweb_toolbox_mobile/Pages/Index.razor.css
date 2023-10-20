@@ -1,0 +1,32 @@
+﻿._c_card {
+    margin: 15px 15px 10px 15px;
+    height: 140px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 2px
+}
+
+._c_card_image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 8px
+}
+
+._c_card_text {
+    margin: 13px 15px 0px 15px;
+    direction: rtl
+}
+
+    ._c_card_text > div:nth-child(1) {
+        font-size: 18px;
+        line-height: 18px;
+        height: 18px;
+    }
+
+    ._c_card_text > div:nth-child(2) {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 15px
+    }

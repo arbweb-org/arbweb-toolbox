@@ -10,10 +10,10 @@ namespace arbweb_toolbox_mobile.Pages
         string[] r_itm { get; set; } = new string[]
         {
             "الكل",
-            "الأكواد المختصرة",
+            "الرموز المختصرة",
             "محادثة سريعة",
-            "الوظائف",
-            "المنح والتدريب"
+            "المفكرة",
+            "الإعدادت"
         };
 
         string f_item_color(int p_ndx)
@@ -23,7 +23,7 @@ namespace arbweb_toolbox_mobile.Pages
                 case 0:
                     return "gold";
 
-                case < 3:
+                case < 4:
                     return "aliceblue";
 
                 default:
