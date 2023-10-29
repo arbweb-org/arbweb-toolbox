@@ -2,15 +2,15 @@
 
 <div class="d-flex flex-row _c_notes_item">
     <div class="_c_notes_icon">
-        <img src="img/Notes/text.svg" />
+        <img src=@(f_icon()) />
     </div>
 
     <div class="flex-grow-1 _c_notes_text">
         <div>
-            صور حفل التخرج
+            @(g_ttl)
         </div>
-        <div>
-            السبت 20 أكتوبر 2023 الساعة 10:43 م
+        <div style="direction:rtl">
+            @(f_date())
         </div>
     </div>
 </div>
