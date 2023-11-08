@@ -5,15 +5,15 @@
            class="_c_borderlessinp flex-grow-1" type="password" placeholder="الرقم السري" />
     @if (r_edt && string.IsNullOrWhiteSpace(g_val))
     {
-        <i class="fa-solid fa-key" @onclick=@v_select_pin></i>
+        <i class="bi bi-key" @onclick=@v_select_pin></i>
     }
     else if (r_edt)
     {
-        <i class="fa-solid fa-floppy-disk" @onclick=@v_add_pin></i>
+        <i class="bi bi-floppy" @onclick=@v_add_pin></i>
     }
     else
     {
-        <i class="fa-solid fa-pen-to-square" @onclick=@v_edit></i>
-        <i class="fa-solid fa-trash" @onclick=@v_delete></i>
+        <i class="bi bi-backspace" @onclick=@v_edit></i>
+        <i class="bi bi-trash" @onclick=@v_delete></i>
     }
 </div>

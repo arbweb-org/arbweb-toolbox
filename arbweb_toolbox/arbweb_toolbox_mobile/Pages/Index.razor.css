@@ -42,7 +42,8 @@
     margin: 8px 15px 0px 0px;
     font-size: 20px;
     text-align: right;
-    direction: rtl
+    direction: rtl;
+    color: silver;
 }
 
 ._c_search_items_box {

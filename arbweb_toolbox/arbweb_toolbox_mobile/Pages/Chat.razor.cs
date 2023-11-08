@@ -8,7 +8,7 @@ namespace arbweb_toolbox_mobile.Pages
         string r_msg { get; set; } = string.Empty;
         string r_phn { get; set; } = string.Empty;
 
-        async Task v_send()
+        async Task v_submit()
         {
             string l_msg = WebUtility.UrlEncode(r_msg);
             await r_mpg.v_launch($"whatsapp://send?phone={r_phn}&text={l_msg}");

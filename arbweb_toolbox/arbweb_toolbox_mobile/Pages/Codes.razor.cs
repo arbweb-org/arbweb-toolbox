@@ -93,7 +93,7 @@ namespace arbweb_toolbox_mobile.Pages
             r_vrs = new _c_code_vars();
         }
 
-        async Task v_dial()
+        async Task v_submit()
         {
             string l_val = r_val.
                 Replace("📞", r_vrs.g_phn).

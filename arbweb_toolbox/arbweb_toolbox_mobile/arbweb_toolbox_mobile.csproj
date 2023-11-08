@@ -17,9 +17,9 @@
 		<ApplicationIdGuid>3C3D5AF1-8918-4803-9999-36134A0CD8FC</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>2.2.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>2.3.0</ApplicationDisplayVersion>
 		<!-- Epoch timestamp -->
-		<ApplicationVersion>1698607962</ApplicationVersion>
+		<ApplicationVersion>1699397856</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>

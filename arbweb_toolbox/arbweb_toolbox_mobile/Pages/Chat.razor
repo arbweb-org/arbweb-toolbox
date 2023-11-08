@@ -9,7 +9,5 @@
     <!-- المعرف -->
     <FieldPhone @bind-g_val=@r_phn></FieldPhone>
 
-    <div class="_c_button" @onclick=@v_send>
-        <i class="fa-brands fa-whatsapp"></i>
-    </div>
+    <FieldButton g_icn="whatsapp" g_valChanged=@(async()=>{ await v_submit(); })></FieldButton>
 </div>

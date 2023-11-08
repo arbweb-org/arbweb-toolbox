@@ -5,6 +5,8 @@ namespace arbweb_toolbox_mobile.Components
 {
     public partial class FieldItem : _c_component
     {
+        Boolean r_sel { get; set; } = false;
+
         [Parameter]
         public DateTime g_dat { get; set; }
 
@@ -24,7 +26,17 @@ namespace arbweb_toolbox_mobile.Components
 
         string f_icon()
         {
-            return $"img/Notes/{g_icn}.svg";
+            return $"bi-{g_icn}";
+        }
+
+        async Task v_selected()
+        {
+            r_sel = true;
+        }
+
+        string f_background()
+        {
+            return "background-color:" + (r_sel ? "whitesmoke" : "transparent");
         }
     }
 }

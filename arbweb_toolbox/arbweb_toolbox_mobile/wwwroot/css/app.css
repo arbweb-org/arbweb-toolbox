@@ -5,11 +5,12 @@
 }
 
 html, body {
-    font-family: 'DroidNaskh', 'CascadiaMono';
+    font-family: 'NotoSansArabic', 'CascadiaMono';
 }
 
 body {
     min-height: 100vh;
+    max-height: 100vh;
 }
 
 select {
@@ -59,7 +60,7 @@ input[type="radio"], input[type="checkbox"] {
     border-style: solid;
     border-width: 2px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 24px;
     background-color: gold;
     height: 40px;
     margin: 10px;
@@ -79,7 +80,10 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 ._c_page {
-    padding: 10px
+    padding: 10px;
+    height:100vh;
+    max-height: 100vh;
+    overflow: hidden
 }
 
 ._c_mono {
@@ -87,7 +91,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 ._c_arabic {
-    font-family: 'DroidNaskh'
+    font-family: 'NotoSansArabic'
 }
 
 ._c_invisible_scroll {
@@ -118,10 +122,14 @@ input[type="radio"], input[type="checkbox"] {
     position: absolute;
     bottom: 30px;
     left: 20px;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     background-color: gold;
-    padding: 10px;
-    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    padding: 15px;
+    box-shadow: 0px 20px 40px -6px rgba(0, 0, 0, 0.35)
+}
+
+i {
+    margin: 4px!important;
 }

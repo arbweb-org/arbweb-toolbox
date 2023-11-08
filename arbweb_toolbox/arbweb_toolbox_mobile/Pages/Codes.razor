@@ -34,7 +34,5 @@
         <FieldPIN @bind-g_val=@r_vrs.g_pin></FieldPIN>
     }
 
-    <div class="_c_button" @onclick=@v_dial>
-        <i class="fa-solid fa-phone"></i>
-    </div>
+    <FieldButton g_icn="telephone" g_valChanged=@(async()=>{ await v_submit(); })></FieldButton>
 </div>
