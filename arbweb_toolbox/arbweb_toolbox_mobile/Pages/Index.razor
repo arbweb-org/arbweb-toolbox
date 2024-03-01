@@ -2,8 +2,11 @@
 
 <div class="d-flex flex-column _c_home_page">
     <!-- عنوان الصفحة وزر القائمة -->
-    <div class="d-flex flex-row-reverse align-items-center _c_top_bar">
-        <img src="img/profile.svg" class="_c_fly_icon" />
+    <div class="d-flex flex-row-reverse align-items-center _c_app_bar_top">
+        <!-- العناصر على اليسار-->
+        <img class="_c_avatar" src="img/profile.svg" />        
+        <div class="flex-grow-1"></div>
+        <!-- العناصر على اليمين-->
     </div>
 
     <!-- صندوق البحث -->
@@ -11,7 +14,8 @@
         <div class="_c_search_icon">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <input type="text" class="_c_borderlessinp _c_search_input">
+        <input type="text" class="_c_borderlessinp _c_search_input"
+            placeholder="مرحبا! اكتب كلمة البحث هنا">
     </div>
 
     <!-- اقتراحات البحث -->
@@ -60,7 +64,7 @@
         </div>
 
         <div style="background-color: white"
-             class="d-flex flex-row-reverse _c_card" @onclick='async() => { await v_nav("Notes"); }'>
+             class="d-flex flex-row-reverse _c_card" @onclick='async() => { await v_nav("Test"); }'>
             <img class="_c_card_image" src="img/Home/items/3.png">
 
             <div class="_c_card_text">

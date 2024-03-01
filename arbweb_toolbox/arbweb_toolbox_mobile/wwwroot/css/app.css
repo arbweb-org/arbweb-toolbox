@@ -13,6 +13,11 @@ body {
     max-height: 100vh;
 }
 
+._c_app_bar_top {
+    margin: 0px 16px 0px 16px;
+    height: 64px;
+}
+
 select {
     appearance: none;
     background-color: transparent;
@@ -42,11 +47,11 @@ select {
 }
 
 ::-webkit-input-placeholder {
-    color: #e6e6e6;
+    color: silver;
 }
 
 ::-moz-placeholder {
-    color: #e6e6e6;
+    color: silver;
 }
 
 input[type="radio"], input[type="checkbox"] {
@@ -60,13 +65,14 @@ input[type="radio"], input[type="checkbox"] {
     border-style: solid;
     border-width: 2px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 24px;
+    line-height: 24px;
     background-color: gold;
     height: 40px;
     margin: 10px;
-    line-height: 16px;
+    margin-top: 20px;
     text-align: center;
-    margin-top: 20px
+    padding-top: 5px 
 }
 
 ._c_input_box {
@@ -77,10 +83,11 @@ input[type="radio"], input[type="checkbox"] {
     margin: 10px;
     font-weight: normal !important;
     height: 40px;
+    font-size: 16px;
+    width: 100%
 }
 
 ._c_page {
-    padding: 10px;
     height:100vh;
     max-height: 100vh;
     overflow: hidden
