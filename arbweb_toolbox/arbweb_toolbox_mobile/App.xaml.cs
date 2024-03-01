@@ -1,8 +1,10 @@
-﻿#if WINDOWS
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
-using Windows.Graphics;
+﻿#if ANDROID
+using Android.Content.Res;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+#elif WINDOWS
+using Windows.UI;
 #endif
+
 
 namespace arbweb_toolbox_mobile
 {
@@ -12,30 +14,47 @@ namespace arbweb_toolbox_mobile
         {
             InitializeComponent();
 
-            Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
+            MainPage = new AppShell();
+
+            v_add_entry_handler();
+            v_add_button_handler();
+        }
+
+        void v_add_entry_handler()
+        {
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(IEntry), (p_hnd, p_viw) =>
             {
-#if WINDOWS
-                var mauiWindow = handler.VirtualView;
-                var nativeWindow = handler.PlatformView;
-                nativeWindow.Activate();
-                IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(nativeWindow);
-                WindowId windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
-                AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
-                appWindow.Resize(new SizeInt32(450, 1000));
+#if ANDROID
+                p_hnd.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
+                p_hnd.PlatformView.SetPadding(0, 0, 0, 0);
 
-                var id = Win32Interop.GetWindowIdFromWindow(windowHandle);
-                DisplayArea displayArea = DisplayArea.GetFromWindowId(id, DisplayAreaFallback.Nearest);
-
-                var CenteredPosition = appWindow.Position;
-                CenteredPosition.X = (displayArea.WorkArea.Width - appWindow.Size.Width) / 2;
-                CenteredPosition.Y = (displayArea.WorkArea.Height - appWindow.Size.Height) / 2;
-                appWindow.Move(CenteredPosition);
-
-                appWindow.Move(new PointInt32(590, 10));
+#elif IOS || MACCATALYST
+                //
+                p_hnd.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+                
+#elif WINDOWS
+                p_hnd.PlatformView.Style = null;
+                p_hnd.PlatformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(0);
+                p_hnd.PlatformView.CornerRadius = new Microsoft.UI.Xaml.CornerRadius(0);
+                p_hnd.PlatformView.Padding = new Microsoft.UI.Xaml.Thickness(0);
 #endif
             });
+        }
 
-            MainPage = new MainPage();
+        void v_add_button_handler()
+        {
+            Microsoft.Maui.Handlers.ButtonHandler.Mapper.AppendToMapping(nameof(IButton), (p_hnd, p_viw) =>
+            {
+#if ANDROID
+                //
+
+#elif IOS || MACCATALYST
+                //
+
+#elif WINDOWS
+                //
+#endif
+            });
         }
     }
 }
