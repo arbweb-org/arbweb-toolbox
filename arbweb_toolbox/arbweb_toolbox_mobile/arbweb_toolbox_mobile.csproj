@@ -17,9 +17,9 @@
 		<ApplicationId>org.arbweb.toolbox</ApplicationId>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>2.5.1</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
 		<!-- Epoch timestamp (seconds) -->
-		<ApplicationVersion>1721092619</ApplicationVersion>
+		<ApplicationVersion>1000</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -40,10 +40,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="Transparent" ForegroundScale="0.6" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="white" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
