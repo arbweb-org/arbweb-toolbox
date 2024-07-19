@@ -5,7 +5,13 @@ VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arbweb_toolbox_api", "arbweb_toolbox_api\arbweb_toolbox_api.csproj", "{D30B2A5B-9CF1-41FC-8644-DCED49EA10D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arbweb_toolbox_mobile", "arbweb_toolbox_mobile\arbweb_toolbox_mobile.csproj", "{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arbweb_toolbox_mobile", "arbweb_toolbox_mobile\arbweb_toolbox_mobile.csproj", "{7B293EE1-12B1-408A-8D40-329B2762E2B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arbweb_toolbox_mobile.Android", "arbweb_toolbox_mobile.Android\arbweb_toolbox_mobile.Android.csproj", "{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arbweb_toolbox_mobile.Desktop", "arbweb_toolbox_mobile.Desktop\arbweb_toolbox_mobile.Desktop.csproj", "{34C3E7A2-FDA3-4B68-A528-484802428023}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arbweb_toolbox_mobile.iOS", "arbweb_toolbox_mobile.iOS\arbweb_toolbox_mobile.iOS.csproj", "{3F86EC89-734C-483D-92E5-3A06B8E5E275}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +23,26 @@ Global
 		{D30B2A5B-9CF1-41FC-8644-DCED49EA10D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D30B2A5B-9CF1-41FC-8644-DCED49EA10D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D30B2A5B-9CF1-41FC-8644-DCED49EA10D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DFE5F87-7691-4FF7-90E9-B216EC87B98C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7B293EE1-12B1-408A-8D40-329B2762E2B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B293EE1-12B1-408A-8D40-329B2762E2B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B293EE1-12B1-408A-8D40-329B2762E2B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B293EE1-12B1-408A-8D40-329B2762E2B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF940845-8C4F-455A-9F1A-EE0BE4F4A234}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{34C3E7A2-FDA3-4B68-A528-484802428023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C3E7A2-FDA3-4B68-A528-484802428023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C3E7A2-FDA3-4B68-A528-484802428023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C3E7A2-FDA3-4B68-A528-484802428023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F86EC89-734C-483D-92E5-3A06B8E5E275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F86EC89-734C-483D-92E5-3A06B8E5E275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F86EC89-734C-483D-92E5-3A06B8E5E275}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3F86EC89-734C-483D-92E5-3A06B8E5E275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F86EC89-734C-483D-92E5-3A06B8E5E275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F86EC89-734C-483D-92E5-3A06B8E5E275}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
